@@ -16,7 +16,7 @@
     "copy:js": "cpy './src/' './build/'",
     "copy:css": "cpy ./*.css ./build/",
     "clean": "rimraf ./build",
-    "build": "npm run clean && concurrently npm:copy:*"
+    "build": "npm run sass && npm run clean && concurrently npm:copy:*"
   },
   "repository": {
     "type": "git",
