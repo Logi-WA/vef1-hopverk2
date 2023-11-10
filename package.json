@@ -1,0 +1,36 @@
+{
+  "name": "vef1-hopverk2",
+  "version": "1.0.0",
+  "description": "Hópverkefni 2 í TÖL107G Vefforritun 1.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "browser-sync start --server --files ./src/ styles.css index.html",
+    "lint": "eslint ./**/*.js",
+    "prettier": "prettier --single-quote --write .",
+    "copy:html": "cpy ./*.html ./build/",
+    "copy:js": "cpy ./src/*.js ./build/",
+    "copy:jss": "cpy ./src/lib/*.js ./build/",
+    "copy:css": "cpy ./*.css ./build/",
+    "build": "concurrently npm:copy:*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Logi-WA/vef1-hopverk2.git"
+  },
+  "author": "Maggi & Logi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Logi-WA/vef1-hopverk2/issues"
+  },
+  "homepage": "https://github.com/Logi-WA/vef1-hopverk2#readme",
+  "dependencies": {
+    "browser-sync": "^2.29.3",
+    "concurrently": "^8.2.2",
+    "cpy-cli": "^5.0.0",
+    "eslint": "^8.53.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "prettier": "^3.0.3"
+  }
+}
