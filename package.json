@@ -13,10 +13,10 @@
     "browser-sync": "browser-sync start --server --files ./src/ styles.css index.html",
     "dev": "concurrently npm:sass-watch npm:browser-sync",
     "copy:html": "cpy ./*.html ./build/",
-    "copy:js": "cpy ./src/*.js ./build/",
-    "copy:jss": "cpy ./src/lib/*.js ./build/",
+    "copy:js": "cpy './src/' './build/'",
     "copy:css": "cpy ./*.css ./build/",
-    "build": "concurrently npm:copy:*"
+    "clean": "rimraf ./build",
+    "build": "npm run sass && npm run clean && concurrently npm:copy:*"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
     "url": "https://github.com/Logi-WA/vef1-hopverk2/issues"
   },
   "homepage": "https://github.com/Logi-WA/vef1-hopverk2#readme",
-  "dependencies": {
+  "devDependencies": {
     "browser-sync": "^2.29.3",
     "concurrently": "^8.2.2",
     "cpy-cli": "^5.0.0",
@@ -37,7 +37,8 @@
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
     "prettier": "^3.0.3",
-    "sass": "^1.69.4",
+    "rimraf": "^5.0.5",
+    "sass": "^1.69.5",
     "stylelint": "^15.11.0",
     "stylelint-config-sass-guidelines": "^10.0.0",
     "stylelint-config-standard": "^34.0.0"
