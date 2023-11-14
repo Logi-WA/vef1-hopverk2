@@ -1,20 +1,18 @@
 .index-cats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 10px;
-  padding: 10px;
+  margin-top: 4rem;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: var(--font-family-base);
+  }
 }
 
-.cat-grid-item {
+.grid-cat {
   background-color: #fff;
   border: 1px solid #000;
-  padding: 20px;
+  padding: 5rem 20px;
   text-align: center;
-  font-size: 20px;
-}
-
-@media (max-width: 600px) {
-  .grid-container {
-    grid-template-columns: 1fr;
-  }
+  font-size: 4rem;
+  font-family: var(--font-family-base);
 }

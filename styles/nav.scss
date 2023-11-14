@@ -13,12 +13,20 @@ nav .title {
   font-family: var(--font-family-logo);
   font-weight: bold;
   margin-bottom: 0;
+  margin-left: 0.5rem;
 }
 
 .nav-links {
   display: flex;
   flex-direction: column;
   margin-right: 1rem;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  margin: 2px 0;
+  display: inline-block;
 }
 
 .nav-links .current {
@@ -30,22 +38,15 @@ nav .title {
   display: block;
 }
 
+.nav-links .top-links {
+  margin-bottom: 1rem;
+}
+
 .nav-links .top-links a,
 .nav-links .bottom-links a {
   font-family: var(--font-family-heading);
   font-size: 1.2rem;
   margin-left: 0.5rem;
-}
-
-.nav-links .top-links {
-  margin-bottom: 1rem;
-}
-
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-  margin: 2px 0;
-  display: inline-block;
 }
 
 .nav-links a:hover {

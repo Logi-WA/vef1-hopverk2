@@ -6,6 +6,13 @@
 }
 
 @font-face {
+  font-family: 'Noto Sans Display';
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/NotoSansDisplay-VariableFont.ttf') format('woff');
+}
+
+@font-face {
   font-family: Lato;
   font-style: normal;
   font-display: swap;

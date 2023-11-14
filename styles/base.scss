@@ -30,3 +30,8 @@ ul {
 img {
   width: 20vw;
 }
+
+main {
+  margin: 0 auto;
+  max-width: var(--max-width);
+}
