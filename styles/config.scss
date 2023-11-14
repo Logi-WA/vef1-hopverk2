@@ -1,0 +1,25 @@
+:root {
+  --font-base-body-px: 16px;
+  --spacing: 1rem;
+  --vertical-space: calc(var(--gutter));
+  --max-width: 1400px;
+  --width-offset: calc(100% - (2 * var(--offset)));
+  --width-column: calc(var(--width-offset) - (11 * var(var(--vertical-space))));
+  --border-small: 1px;
+  --border-large: 8px;
+  --border-radius: 6px;
+  --columns: 12;
+  --gutter: 30px;
+  --offset: 20px;
+  --coffee-with-milk: #e1cec2;
+  --black-coffee: #3c2a1e;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-white1: #fefefe;
+  --color-coffee: #6f4e37;
+  --color-puce-red: #682d2d;
+  --font-base-size: 1rem;
+  --font-family-heading: 'Lato', sans-serif;
+  --font-family-base: 'Lato', sans-serif;
+  --font-family-logo: 'Lora', serif;
+}
