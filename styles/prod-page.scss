@@ -1,0 +1,48 @@
+.page-product {
+  margin: 4rem 0 4rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.prods-page-content {
+  margin-top: 4rem;
+}
+
+.product-img {
+  flex: 1;
+  margin-right: 1rem;
+  max-width: 50%;
+}
+
+.product-information {
+  flex: 1;
+  max-width: 50%;
+  align-self: flex-start;
+}
+
+.product-name {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-weight: bold;
+}
+
+.product-category,
+.product-price,
+.product-text {
+  line-height: 1.5rem;
+}
+
+.product-price {
+  margin-bottom: 1rem;
+}
+
+.product-text > p {
+  margin-bottom: 1rem;
+}
+
+.category-header {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: Lato;
+}
