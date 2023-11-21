@@ -6,6 +6,7 @@
  * @property {string} title Titill vöru.
  * @property {string} price Verð á vöru.
  * @property {string} description Lýsing á vöru.
+ * @property {string} image Mynd af vöru.
  * @property {string} created Tími sem vara var stofnuð.
  * @property {string} updated Tími sem vara var uppfærð.
  * @property {Category} category Vöruflokkur vöru.

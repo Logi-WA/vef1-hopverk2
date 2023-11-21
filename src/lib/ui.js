@@ -69,46 +69,37 @@ function setNotLoading(parentElement, searchForm = undefined) {
 
 /**
  * Birta niðurstöður úr leit.
- * @param {import('./api.types.js').Launch[] | null} results Niðurstöður úr leit
+ * @param {import('./api.types.js').Product[] | null} results Niðurstöður úr leit
  * @param {string} query Leitarstrengur.
  */
 function createSearchResults(results, query) {
-  const list = el('ul', { class: 'results' });
-
   if (!results) {
-    // Error state
-    const item = el('li', { class: 'result' }, 'Villa við að sækja gögn.');
-    list.appendChild(item);
-  } else {
-    // Empty state
-    if (results.length === 0) {
-      const item = el('li', { class: 'result' }, 'Ekkert fannst.');
-      list.appendChild(item);
-    }
-
-    // Data state
-    for (const result of results) {
-      const item = el(
-        'li',
-        { class: 'result' },
-        el('a', { href: `/?id=${result.id}` }, result.name),
-        el(
-          'span',
-          { class: `status ${result.status.abbrev}` },
-          result.status.name,
-        ),
-        el('span', { class: 'mission' }, result.mission ?? '*Ekkert heiti*'),
-      );
-      list.appendChild(item);
-    }
+    const error = el('p', { class: 'result' }, 'Villa við að sækja gögn.');
+    return error;
   }
 
-  return el(
-    'div',
-    { class: 'results' },
-    el('h2', {}, `Leitarniðurstöður fyrir „${query}“`),
-    list,
-  );
+  if (results.length === 0) {
+    const notFound = el('p', { class: 'result' }, 'Ekkert fannst.');
+    return notFound;
+  }
+
+  const container = el('div', { class: 'product-grid' });
+
+  for (const result of results) {
+    const product = el('div', { class: 'grid-product' },
+      el('img', { class: 'prod-img', src: result.image }),
+      el('div', { class: 'prod-info' },
+        el('div', {},
+          el('p', { class: 'prod-name' }, result.title),
+          el('p', { class: 'prod-category' }, result.category.title)
+        ),
+        el('p', { class: 'prod-price' }, result.price)
+      )
+    );
+    container.appendChild(product);
+  }
+
+  return container;
 }
 
 /**
@@ -132,7 +123,7 @@ export async function searchAndRender(parentElement, searchForm, query) {
   }
 
   setLoading(mainElement, searchForm);
-  const results = await searchLaunches(query);
+  const results = await searchProducts(query);
   setNotLoading(mainElement, searchForm);
 
   const resultsEl = createSearchResults(results, query);
@@ -164,11 +155,11 @@ export function renderFrontpage(
 }
 
 /**
- * Sýna geimskot.
- * @param {HTMLElement} parentElement Element sem á að innihalda geimskot.
- * @param {string} id Auðkenni geimskots.
+ * Sýna vöru.
+ * @param {HTMLElement} parentElement Element sem á að innihalda vöru.
+ * @param {string} id Auðkenni vöru.
  */
-export async function renderDetails(parentElement, id) {
+export async function renderProduct(parentElement, id) {
   const container = el('main', {});
   const backElement = el(
     'div',
