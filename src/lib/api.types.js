@@ -1,44 +1,25 @@
-// Hér skilgreinum við sjálf hvernig gögn líta út—við getum fengið þetta frá
-// Swagger skjali fyrir vefþjónustu, t.d.:
-// https://lldev.thespacedevs.com/docs/#/launch/launch_list
+// https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/
 
 /**
- * @typedef {object} LaunchStatus
- * @property {string} name Nafn á stöðu.
- * @property {string} description Lýsing á stöðu.
- * @property {string} abbrev Stutt nafn stöðu.
+ * @typedef {object} Product
+ * @property {string} id Auðkenni vöru.
+ * @property {string} title Titill vöru.
+ * @property {string} price Verð á vöru.
+ * @property {string} description Lýsing á vöru.
+ * @property {string} created Tími sem vara var stofnuð.
+ * @property {string} updated Tími sem vara var uppfærð.
+ * @property {Category} category Vöruflokkur vöru.
  */
 
 /**
- * @typedef {object} LaunchMission
- * @property {string} name Nafn á geimferð.
- * @property {string} description Lýsing á geimferð.
+ * @typedef {object} Category
+ * @property {string} id Auðkenni vöruflokks.
+ * @property {string} title Titill vöruflokks.
  */
 
 /**
- * @typedef {object} Launch
- * @property {string} id Auðkenni geimskots.
- * @property {string} name Nafn geimskots.
- * @property {LaunchStatus} status Staða geimskots (nafn).
- * @property {string | undefined} mission Nafn geimferðar.
- */
-
-/**
- * @typedef {object} LaunchDetail
- * @property {string} name Nafn geimskots.
- * @property {LaunchStatus} status Staða geimskots.
- * @property {LaunchMission | null} mission Geimferð.
- * @property {string} window_start „Gluggi“ geimskots hefst, ISO 8601 form.
- * @property {string} window_end „Gluggi“ geimskots hefst, ISO 8601 form.
- * @property {string} image Hlekkur á mynd af geimskoti.
- */
-
-/**
- * @typedef {object} LaunchSearchResults
- * @property {number} count Fjöldi niðurstaða.
- * @property {string | null} next Hlekkur á næstu síðu af niðurstöðum.
- * @property {string | null} previous Hlekkur á fyrri síðu af niðurstöðum.
- * @property {Launch[] | null} results Fylki af niðurstöðum.
+ * @typedef {object} ProductSearchResult
+ * @property {Product[]} items Vörur.
  */
 
 // Verðum að exporta einhverju til að fá ekki villu...

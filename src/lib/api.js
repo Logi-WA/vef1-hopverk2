@@ -5,13 +5,13 @@
 
 /**
  * Sækjum týpurnar okkar.
- * @typedef {import('./api.types.js').Launch} Launch
- * @typedef {import('./api.types.js').LaunchDetail} LaunchDetail
- * @typedef {import('./api.types.js').LaunchSearchResults} LaunchSearchResults
+ * @typedef {import('./api.types.js').Product} Product
+ * @typedef {import('./api.types.js').Category} Category
+ * @typedef {import('./api.types.js').ProductSearchResult} ProductSearchResult
  */
 
-/** Grunnslóð á API (DEV útgáfa) */
-const API_URL = 'https://lldev.thespacedevs.com/2.2.0/';
+/** Grunnslóð á API */
+const API_URL = 'https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/';
 
 /**
  * Skilar Promise sem bíður í gefnar millisekúndur.
@@ -25,14 +25,13 @@ export async function sleep(ms) {
 }
 
 /**
- * Leita í geimskota API eftir leitarstreng.
+ * Leita að vörum í API eftir leitarstreng.
  * @param {string} query Leitarstrengur.
- * @returns {Promise<Launch[] | null>} Fylki af geimskotum eða `null` ef villa
+ * @returns {Promise<Product[] | null>} Fylki af vörum eða `null` ef villa
  *  kom upp.
  */
-export async function searchLaunches(query) {
-  const url = new URL('launch', API_URL);
-  url.searchParams.set('mode', 'list');
+export async function searchProducts(query) {
+  const url = new URL('products', API_URL);
   url.searchParams.set('search', query);
 
   // await sleep(1000);
@@ -50,11 +49,7 @@ export async function searchLaunches(query) {
     return null;
   }
 
-  // Smá varkárni: gerum ekki ráð fyrir að API skili alltaf
-  // réttum gögnum, en `json()` skilar alltaf *öllu* með `any`
-  // týpunni sem er of víðtæk til að vera gagnleg.
-  // (en hvað ef gögnin eru ekki eins og týpan??)
-  /** @type {LaunchSearchResults | null} */
+  /** @type {ProductSearchResult | null} */
   let data;
 
   try {
@@ -64,19 +59,18 @@ export async function searchLaunches(query) {
     return null;
   }
 
-  /** @type {Launch[]} */
-  const results = data?.results ?? [];
+  /** @type {Product[]} */
+  const items = data?.items ?? [];
 
-  return results;
+  return items;
 }
 
 /**
- * Skilar stöku geimskoti eftir auðkenni eða `null` ef ekkert fannst.
- * @param {string} id Auðkenni geimskots.
- * @returns {Promise<LaunchDetail | null>} Geimskot.
+ * Skilar vörum eða `null` ef ekkert fannst.
+ * @returns {Promise<Product[] | null>} Vara.
  */
-export async function getLaunch(id) {
-  const url = new URL(`launch/${id}`, API_URL);
+export async function getProducts() {
+  const url = new URL(`products/?limit=999`, API_URL);
 
   let response;
   try {
@@ -91,15 +85,52 @@ export async function getLaunch(id) {
     return null;
   }
 
-  /** @type {LaunchDetail | null} */
+  /** @type {ProductSearchResult | null} */
   let data;
 
   try {
     data = await response.json();
   } catch (e) {
+    console.error('Villa við að lesa gögn', e);
+    return null;
+  }
+
+  /** @type {Product[]} */
+  const items = data?.items ?? [];
+
+  return items;
+}
+
+/**
+ * Skilar vöru eftir auðkenni eða `null` ef ekkert fannst.
+ * @param {string} id Auðkenni vöru.
+ * @returns {Promise<Product | null>} Vara.
+ */
+export async function getProduct(id) {
+  const url = new URL(`products/${id}`, API_URL);
+
+  let response;
+  try {
+    response = await fetch(url);
+  } catch (e) {
+    console.error('Villa við að sækja gögn um geimskot', e);
+    return null;
+  }
+
+  if (!response.ok) {
+    console.error('Fékk ekki 200 status frá API fyrir geimskot', response);
+    return null;
+  }
+
+  /** @type {Product} */
+  let product;
+
+  try {
+    product = await response.json();
+  } catch (e) {
     console.error('Villa við að lesa gögn um geimskot', e);
     return null;
   }
 
-  return data;
+  return product;
 }
