@@ -70,9 +70,8 @@ function setNotLoading(parentElement, searchForm = undefined) {
 /**
  * Birta niðurstöður úr leit.
  * @param {import('./api.types.js').Product[] | null} results Niðurstöður úr leit
- * @param {string} query Leitarstrengur.
  */
-function createSearchResults(results, query) {
+function createSearchResults(results) {
   if (!results) {
     const error = el('p', { class: 'result' }, 'Villa við að sækja gögn.');
     return error;
@@ -126,7 +125,7 @@ export async function searchAndRender(parentElement, searchForm, query) {
   const results = await searchProducts(query);
   setNotLoading(mainElement, searchForm);
 
-  const resultsEl = createSearchResults(results, query);
+  const resultsEl = createSearchResults(results);
 
   mainElement.appendChild(resultsEl);
 }
