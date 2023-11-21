@@ -1,4 +1,4 @@
-import { getLaunch, searchLaunches } from './api.js';
+import { getProduct, getProducts, searchProducts } from './api.js';
 import { el } from './elements.js';
 
 /**
@@ -8,7 +8,7 @@ import { el } from './elements.js';
  * @returns {HTMLElement} Leitarform.
  */
 export function renderSearchForm(searchHandler, query = undefined) {
-  const search = el('input', {
+  /*const search = el('input', {
     type: 'search',
     placeholder: 'Leitarorð',
     value: query ?? '',
@@ -17,7 +17,7 @@ export function renderSearchForm(searchHandler, query = undefined) {
 
   const container = el('form', { class: 'search' }, search, button);
   container.addEventListener('submit', searchHandler);
-  return container;
+  return container;*/
 }
 
 /**

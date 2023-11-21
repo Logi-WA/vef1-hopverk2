@@ -1,6 +1,6 @@
 /**
  * API föll.
- * @see https://lldev.thespacedevs.com/2.2.0/swagger/
+ * @see https://vef1-2023-h2-api-791d754dda5b.herokuapp.com/
  */
 
 /**
@@ -67,10 +67,18 @@ export async function searchProducts(query) {
 
 /**
  * Skilar vörum eða `null` ef ekkert fannst.
- * @returns {Promise<Product[] | null>} Vara.
+ * @param {string | null} limit Hámarksfjöldi vara sem má skila.
+ * @param {string | null} category Vöruflokkur sem vörurnar eiga að tilheyra ef tilgreint.
+ * @returns {Promise<Product[] | null>} Vörur.
  */
-export async function getProducts() {
-  const url = new URL(`products/?limit=999`, API_URL);
+export async function getProducts(limit = null, category = null) {
+  const url = new URL('products', API_URL);
+  if (limit) {
+    url.searchParams.set('limit', limit);
+  }
+  if (category) {
+    url.searchParams.set('category', category);
+  }
 
   let response;
   try {

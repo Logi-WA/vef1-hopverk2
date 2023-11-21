@@ -38,6 +38,18 @@ function route() {
   } else {
     renderFrontpage(document.body, onSearch, query ?? undefined);
   }
+
+  switch (window.location.pathname) {
+    case '/pages/product.html':
+      renderProductPage(document.body);
+      break;
+    case '/pages/products.html':
+      renderProductsPage(document.body);
+      break;
+    default:
+      renderFrontPage(document.body, onSearch, query ?? undefined);
+      break;
+  }
 }
 
 // Bregst við því þegar við notum vafra til að fara til baka eða áfram.
