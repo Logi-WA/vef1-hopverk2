@@ -17,6 +17,7 @@ h3 {
 a {
   color: inherit;
   background-color: inherit;
+  text-decoration: none;
 }
 
 img {
@@ -29,4 +30,9 @@ ul {
 
 img {
   width: 20vw;
+}
+
+main {
+  margin: 0 auto;
+  max-width: var(--max-width);
 }

@@ -1,3 +1,8 @@
-img {
-  width: 20vw;
-}
+@import 'styles/reset';
+@import 'styles/fonts';
+@import 'styles/config';
+@import 'styles/base';
+@import 'styles/grid';
+@import 'styles/nav';
+@import 'styles/new-products';
+@import 'styles/category-grid';

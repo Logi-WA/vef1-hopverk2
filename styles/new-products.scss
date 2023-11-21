@@ -1,0 +1,59 @@
+.new-products {
+  margin-top: 2rem;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: Lato;
+  }
+}
+
+.grid-product {
+  font-family: var(--font-family-base);
+  //
+  display: flex;
+  flex-direction: column;
+
+  .prod-img {
+    width: 100%;
+    margin-bottom: 0.8rem;
+  }
+
+  .prod-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .prod-name {
+    font-family: var(--font-family-logo);
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .prod-category {
+    font-size: 0.9rem;
+  }
+
+  .prod-price {
+    font-size: 1.5rem;
+    margin-left: auto;
+  }
+}
+
+.new-products button {
+  font-size: 1rem;
+  padding: 12px 50px;
+  background-color: #222;
+  border: none;
+  border-radius: 5px;
+
+  margin-top: 3rem;
+
+  a {
+    font-family: var(--font-family-base);
+    text-decoration: none;
+    color: #fff;
+  }
+}
