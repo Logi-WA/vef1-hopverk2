@@ -41,3 +41,25 @@ export function empty(element) {
     element.removeChild(element.firstChild);
   }
 }
+
+/**
+ * @typedef {import('./api.types.js').Product} Product
+ */
+
+/**
+ * Býr til grid-product element.
+ * @param {Product} product Upplýsingar um vöru.
+ */
+export function card(product) {
+  const productEl = el('div', { class: 'grid-product' },
+    el('img', { class: 'prod-img', src: product.image }),
+    el('div', { class: 'prod-info' },
+      el('div', {},
+        el('p', { class: 'prod-name' }, product.title),
+        el('p', { class: 'prod-category' }, product.category.title)
+      ),
+      el('p', { class: 'prod-price' }, product.price)
+    )
+  );
+  return productEl;
+}

@@ -1,5 +1,5 @@
 import { getProduct, getProducts, searchProducts } from './api.js';
-import { el } from './elements.js';
+import { el, card } from './elements.js';
 
 /**
  * Býr til leitarform.
@@ -8,7 +8,7 @@ import { el } from './elements.js';
  * @returns {HTMLElement} Leitarform.
  */
 export function renderSearchForm(searchHandler, query = undefined) {
-  /*const search = el('input', {
+  /* const search = el('input', {
     type: 'search',
     placeholder: 'Leitarorð',
     value: query ?? '',
@@ -17,7 +17,7 @@ export function renderSearchForm(searchHandler, query = undefined) {
 
   const container = el('form', { class: 'search' }, search, button);
   container.addEventListener('submit', searchHandler);
-  return container;*/
+  return container; */
 }
 
 /**
@@ -82,20 +82,10 @@ function createSearchResults(results) {
     return notFound;
   }
 
-  const container = el('div', { class: 'product-grid' });
+  const container = el('div', { class: 'product-grid grid' });
 
   for (const result of results) {
-    const product = el('div', { class: 'grid-product' },
-      el('img', { class: 'prod-img', src: result.image }),
-      el('div', { class: 'prod-info' },
-        el('div', {},
-          el('p', { class: 'prod-name' }, result.title),
-          el('p', { class: 'prod-category' }, result.category.title)
-        ),
-        el('p', { class: 'prod-price' }, result.price)
-      )
-    );
-    container.appendChild(product);
+    container.appendChild(card(result));
   }
 
   return container;
@@ -136,21 +126,20 @@ export async function searchAndRender(parentElement, searchForm, query) {
  * @param {(e: SubmitEvent) => void} searchHandler Fall sem keyrt er þegar leitað er.
  * @param {string | undefined} query Leitarorð, ef eitthvað, til að sýna niðurstöður fyrir.
  */
-export function renderFrontpage(
-  parentElement,
-  searchHandler,
-  query = undefined,
-) {
-  const heading = el('h1', {}, 'Geimskotaleitin 🚀');
+export function renderFrontpage(parentElement, searchHandler, query = undefined) {
   const searchForm = renderSearchForm(searchHandler, query);
-  const container = el('main', {}, heading, searchForm);
-  parentElement.appendChild(container);
+  parentElement.appendChild(searchForm);
 
-  if (!query) {
+  if (query) {
+    searchAndRender(parentElement, searchForm, query);
     return;
   }
 
-  searchAndRender(parentElement, searchForm, query);
+  const container = el('div', { class: 'product-grid' });
+
+  for (const result of results) {
+    container.appendChild(card(result));
+  }
 }
 
 /**
