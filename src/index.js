@@ -46,7 +46,7 @@ function route() {
   }
 
   if (id) {
-    renderProduct(mainElement, id)
+    renderProduct(mainElement, id);
   } else {
     renderFrontpage(mainElement, onSearch, query ?? undefined);
   }

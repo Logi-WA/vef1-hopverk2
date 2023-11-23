@@ -14,12 +14,14 @@ export function renderSearchForm(searchHandler, query = undefined) {
     placeholder: 'Leita...',
     value: query ?? '',
   });
-  const button = el('button', { class: 'search-btn' },
+  const button = el(
+    'button',
+    { class: 'search-btn' },
     el('img', {
       class: 'search-icon',
       src: './icon/search.png',
-      alt: ''
-    })
+      alt: '',
+    }),
   );
 
   const container = el('form', { class: 'search-bar' }, search, button);
@@ -123,7 +125,11 @@ export async function searchAndRender(parentElement, searchForm, query) {
  * @param {(e: SubmitEvent) => void} searchHandler Fall sem keyrt er þegar leitað er.
  * @param {string | undefined} query Leitarorð, ef eitthvað, til að sýna niðurstöður fyrir.
  */
-export async function renderFrontpage(parentElement, searchHandler, query = undefined) {
+export async function renderFrontpage(
+  parentElement,
+  searchHandler,
+  query = undefined,
+) {
   const searchForm = renderSearchForm(searchHandler, query);
   parentElement.appendChild(searchForm);
 
@@ -132,8 +138,10 @@ export async function renderFrontpage(parentElement, searchHandler, query = unde
     return;
   }
 
-  const newProductsContainer = el('div', { class: 'new-products', id: 'newProds' },
-    el('h2', { }, 'Nýjar vörur')
+  const newProductsContainer = el(
+    'div',
+    { class: 'new-products', id: 'newProds' },
+    el('h2', {}, 'Nýjar vörur'),
   );
 
   parentElement.appendChild(newProductsContainer);
@@ -166,22 +174,32 @@ export async function renderProduct(parentElement, id) {
     return;
   }
 
-  const productInformation = el('div', { class: 'product-information'},
-    el('h1', { class: 'product-name'}, product.title),
-    el('p', { class: 'product-category'}, `Flokkur: ${product.category_title}`),
-    el('p', { class: 'product-price'}, `Verð: ${product.price} kr.-`),
-    el('div', { class: 'product-text'},
-      el('p', { }, product.description)
-    )
+  const productInformation = el(
+    'div',
+    { class: 'product-information' },
+    el('h1', { class: 'product-name' }, product.title),
+    el(
+      'p',
+      { class: 'product-category' },
+      `Flokkur: ${product.category_title}`,
+    ),
+    el('p', { class: 'product-price' }, `Verð: ${product.price} kr.-`),
+    el('div', { class: 'product-text' }, el('p', {}, product.description)),
   );
 
-  const productPage = el('div', { class: 'page-product' },
+  const productPage = el(
+    'div',
+    { class: 'page-product' },
     el('img', { class: 'product-img', src: product.image }),
-    productInformation
+    productInformation,
   );
-    
-  const relatedTitle = el('h2', { class: 'category-header' }, `Skoðaðu meira úr ${product.category_title}`);
-  
+
+  const relatedTitle = el(
+    'h2',
+    { class: 'category-header' },
+    `Skoðaðu meira úr ${product.category_title}`,
+  );
+
   parentElement.appendChild(productPage);
   parentElement.appendChild(relatedTitle);
 
