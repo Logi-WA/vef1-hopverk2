@@ -51,19 +51,29 @@ export function empty(element) {
  * @param {Product} product Upplýsingar um vöru.
  */
 export function card(product) {
-  const productEl = el('div', { class: 'grid-product' },
-    el('a', { href: `/?id=${product.id}`, class: 'prod-img-link' },
+  const productEl = el(
+    'div',
+    { class: 'grid-product' },
+    el(
+      'a',
+      { href: `/?id=${product.id}`, class: 'prod-img-link' },
       el('img', { class: 'prod-img', src: product.image }),
     ),
-    el('div', { class: 'prod-info' },
-      el('div', {},
-        el('a', { href: `/?id=${product.id}`, class: 'prod-name-link' },
+    el(
+      'div',
+      { class: 'prod-info' },
+      el(
+        'div',
+        {},
+        el(
+          'a',
+          { href: `/?id=${product.id}`, class: 'prod-name-link' },
           el('p', { class: 'prod-name' }, product.title),
         ),
-        el('p', { class: 'prod-category' }, product.category_title)
+        el('p', { class: 'prod-category' }, product.category_title),
       ),
-      el('p', { class: 'prod-price' }, product.price)
-    )
+      el('p', { class: 'prod-price' }, product.price),
+    ),
   );
   return productEl;
 }
