@@ -36,8 +36,8 @@ Allir kóðarnir eru í möppunni _/src_ þar sem `index.js` er fyrir `index.htm
 
 Logi Arnarsson  
 _Logi-WA_  
-loa13@hi.is
+[loa13@hi.is](mailto:loa13@hi.is)
 
 Sigurþór Maggi Snorrason  
 _SysMac5_  
-sms70@hi.is
+[sms70@hi.is](mailto:sms70@hi.is)
