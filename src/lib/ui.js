@@ -106,6 +106,7 @@ function createSearchResults(results) {
  */
 export async function searchAndRender(parentElement, searchForm, query) {
   parentElement.querySelector('.result')?.remove();
+  parentElement.querySelector('#newProds')?.remove();
 
   setLoading(parentElement, searchForm);
   const results = await searchProducts(query);
