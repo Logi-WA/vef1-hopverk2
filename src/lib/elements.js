@@ -2,7 +2,7 @@
  * Býr til element með nafni og bætir við öðrum elementum eða texta nóðum.
  * @param {string} name Nafn á elementi
  * @param  {...string | Element} children Hugsanleg börn: önnur element eða strengir
- * @returns {Element} Elementi með gefnum börnum
+ * @returns {HTMLElement} Elementi með gefnum börnum
  */
 export function el(name, attributes = {}, ...children) {
   const e = document.createElement(name);

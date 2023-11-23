@@ -5,7 +5,7 @@ import { el, card, empty } from './elements.js';
  * Býr til leitarform.
  * @param {(e: SubmitEvent) => void} searchHandler Fall sem keyrt er þegar leitað er.
  * @param {string | undefined} query Leitarstrengur.
- * @returns {Element} Leitarform.
+ * @returns {HTMLElement} Leitarform.
  */
 export function renderSearchForm(searchHandler, query = undefined) {
   const search = el('input', {
