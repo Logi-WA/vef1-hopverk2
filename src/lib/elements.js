@@ -57,7 +57,7 @@ export function card(product) {
     el(
       'a',
       { href: `/?id=${product.id}`, class: 'prod-img-link' },
-      el('img', { class: 'prod-img', src: product.image })
+      el('img', { class: 'prod-img', src: product.image }),
     ),
     el(
       'div',
@@ -68,12 +68,12 @@ export function card(product) {
         el(
           'a',
           { href: `/?id=${product.id}`, class: 'prod-name-link' },
-          el('p', { class: 'prod-name' }, product.title)
+          el('p', { class: 'prod-name' }, product.title),
         ),
-        el('p', { class: 'prod-category' }, product.category_title)
+        el('p', { class: 'prod-category' }, product.category_title),
       ),
-      el('p', { class: 'prod-price' }, `${product.price} kr.-`)
-    )
+      el('p', { class: 'prod-price' }, `${product.price} kr.-`),
+    ),
   );
   return productEl;
 }
