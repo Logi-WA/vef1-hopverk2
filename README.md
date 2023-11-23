@@ -16,17 +16,21 @@ npm run lint
 
 ## Uppsetning verkefnis
 
-Leturgerðir eru í möppunni _fonts_, merki í _icon_, HTML-skrá í _pages_ fyrir utan `index.html` og svo eru allar `.scss`skrárnar í _styles_ fyrir utan `styles.scss`.
+Leturgerðir eru í möppunni _/fonts_, merki í _/icon_, HTML-skrá í _/pages_ fyrir utan `index.html`, allar `.scss`skrárnar í _/styles_ fyrir utan `styles.scss` og allir JavaScript-kóðar í _/src_.
 
 ### HTML
 
 HTML skrárnar eru tvær, þ.e. `index.html` sem er forsíðan og `products.html` sem sýnir yfirlit yfir allar vörur. Á forsíðunni er
 
-Hver skrá er með sama haus og fót en annars er hver síða með sitt eigið meginmál þar á milli.
+Skrárnar eru með sama haus en með sitt eigið meginmál sem stýrt er af JavaScript.
 
 ### CSS
 
-Notað var SCSS til þess að flokka CSS-ið í skrár en þær eru töluvert margar. Skrárnar sem upphafsstilla eru `base.scss`,`config.scss`, `fonts.scss` og `reset.scss`. Restin á við um ákveðna hluta af vefsíðunni.
+Notað var SCSS til þess að flokka CSS-ið í skrár en þær eru töluvert margar. Skrárnar sem upphafsstilla eru `base.scss`, `config.scss`, `fonts.scss` og `reset.scss`. Restin á við um ákveðna hluta af vefsíðunni.
+
+### JavaScript
+
+Allir kóðarnir eru í möppunni _/src_ þar sem `index.js` er fyrir `index.html` og `products.js` er fyrir `products.html`. Þær skrár nota föll úr skránum í möppunni _/src/lib_.
 
 ## Höfundar
 
