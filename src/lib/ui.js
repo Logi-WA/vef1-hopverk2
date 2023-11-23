@@ -152,61 +152,44 @@ export async function renderFrontpage(parentElement, searchHandler, query = unde
  * @param {HTMLElement} parentElement Element sem á að innihalda vöru.
  * @param {string} id Auðkenni vöru.
  */
-/* export async function renderProduct(parentElement, id) {
-  const container = el('main', {});
-  const backElement = el(
-    'div',
-    { class: 'back' },
-    el('a', { href: '/' }, 'Til baka'),
-  );
+export async function renderProduct(parentElement, id) {
+  empty(parentElement);
 
-  parentElement.appendChild(container);
-
-  setLoading(container);
-  const result = await getLaunch(id);
-  setNotLoading(container);
+  setLoading(parentElement);
+  const product = await getProduct(id);
+  setNotLoading(parentElement);
 
   // Tómt og villu state, við gerum ekki greinarmun á þessu tvennu, ef við
   // myndum vilja gera það þyrftum við að skilgreina stöðu fyrir niðurstöðu
-  if (!result) {
-    container.appendChild(el('p', {}, 'Villa við að sækja gögn um geimskot!'));
-    container.appendChild(backElement);
+  if (!product) {
+    parentElement.appendChild(el('p', {}, 'Villa við að sækja vöru!'));
     return;
   }
 
-  const missionElement = result.mission
-    ? el(
-        'div',
-        { class: 'mission' },
-        el('h2', {}, `Geimferð: ${result.mission?.name ?? '*Engin lýsing*'}`),
-        el('p', {}, result.mission?.description ?? '*Engin lýsing*'),
-      )
-    : el('p', {}, 'Engar upplýsingar um geimferð.');
-
-  const launchElement = el(
-    'article',
-    { class: 'launch' },
-    el(
-      'section',
-      { class: 'info' },
-      el('h1', {}, result.name),
-      el(
-        'div',
-        { class: 'window' },
-        el('p', {}, `Gluggi opnast: ${result.window_start}`),
-        el('p', {}, `Gluggi lokast: ${result.window_end}`),
-      ),
-      el(
-        'div',
-        { class: 'status' },
-        el('h2', {}, `Staða: ${result.status.name}`),
-        el('p', {}, result.status.description),
-      ),
-      missionElement,
-    ),
-    el('div', { class: 'image' }, el('img', { src: result.image, alt: '' })),
-    backElement,
+  const productInformation = el('div', { class: 'product-information'},
+    el('h1', { class: 'product-name'}, product.title),
+    el('p', { class: 'product-category'}, `Flokkur: ${product.category_title}`),
+    el('p', { class: 'product-price'}, `Verð: ${product.price} kr.-`),
+    el('div', { class: 'product-text'},
+      el('p', { }, product.description)
+    )
   );
 
-  container.appendChild(launchElement);
-} */
+  const productPage = el('div', { class: 'page-product' },
+    el('img', { class: 'product-img', src: product.image }),
+    productInformation
+  );
+    
+  const relatedTitle = el('h2', { class: 'category-header' }, `Skoðaðu meira úr ${product.category_title}`);
+  
+  parentElement.appendChild(productPage);
+  parentElement.appendChild(relatedTitle);
+
+  setLoading(parentElement);
+  const results = await getProducts('3', product.category_title);
+  setNotLoading(parentElement);
+
+  const resultsEl = createSearchResults(results);
+
+  parentElement.appendChild(resultsEl);
+}
