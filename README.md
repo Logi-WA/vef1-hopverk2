@@ -2,17 +2,11 @@
 
 ## Keyra vefsíðu
 
-Til þess að keyra vefsíðu skal keyra skipunina:
+Til þess að keyra vefsíðu skal keyra skipunina:  
+`npm run dev`
 
-```bash
-npm run dev
-```
-
-Til þess að keyra lint er keyrt skipunina:
-
-```bash
-npm run lint
-```
+Til þess að keyra lint er keyrt skipunina:  
+`npm run lint`
 
 ## Uppsetning verkefnis
 

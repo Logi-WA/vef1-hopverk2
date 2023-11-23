@@ -21,7 +21,7 @@ export function renderSearchForm(searchHandler, query = undefined) {
       class: 'search-icon',
       src: './icon/search.png',
       alt: '',
-    })
+    }),
   );
 
   const container = el('form', { class: 'search-bar' }, search, button);
@@ -128,7 +128,7 @@ export async function searchAndRender(parentElement, searchForm, query) {
 export async function renderFrontpage(
   parentElement,
   searchHandler,
-  query = undefined
+  query = undefined,
 ) {
   const searchForm = renderSearchForm(searchHandler, query);
   parentElement.appendChild(searchForm);
@@ -141,7 +141,7 @@ export async function renderFrontpage(
   const newProductsContainer = el(
     'div',
     { class: 'new-products', id: 'newProds' },
-    el('h2', {}, 'Nýjar vörur')
+    el('h2', {}, 'Nýjar vörur'),
   );
 
   parentElement.appendChild(newProductsContainer);
@@ -181,23 +181,23 @@ export async function renderProduct(parentElement, id) {
     el(
       'p',
       { class: 'product-category' },
-      `Flokkur: ${product.category_title}`
+      `Flokkur: ${product.category_title}`,
     ),
     el('p', { class: 'product-price' }, `Verð: ${product.price} kr.-`),
-    el('div', { class: 'product-text' }, el('p', {}, product.description))
+    el('div', { class: 'product-text' }, el('p', {}, product.description)),
   );
 
   const productPage = el(
     'div',
     { class: 'page-product' },
     el('img', { class: 'product-img', src: product.image }),
-    productInformation
+    productInformation,
   );
 
   const relatedTitle = el(
     'h2',
     { class: 'category-header' },
-    `Skoðaðu meira úr ${product.category_title}`
+    `Skoðaðu meira úr ${product.category_title}`,
   );
 
   parentElement.appendChild(productPage);
