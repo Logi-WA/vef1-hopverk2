@@ -5,7 +5,7 @@ import { el, card, empty } from './elements.js';
  * Býr til leitarform.
  * @param {(e: SubmitEvent) => void} searchHandler Fall sem keyrt er þegar leitað er.
  * @param {string | undefined} query Leitarstrengur.
- * @returns {HTMLElement} Leitarform.
+ * @returns {Element} Leitarform.
  */
 export function renderSearchForm(searchHandler, query = undefined) {
   const search = el('input', {
@@ -31,7 +31,7 @@ export function renderSearchForm(searchHandler, query = undefined) {
 
 /**
  * Setur „loading state“ skilabað meðan gögn eru sótt.
- * @param {HTMLElement} parentElement Element sem á að birta skilbaoð í.
+ * @param {Element} parentElement Element sem á að birta skilbaoð í.
  * @param {Element | undefined} searchForm Leitarform sem á að gera óvirkt.
  */
 function setLoading(parentElement, searchForm = undefined) {
@@ -55,7 +55,7 @@ function setLoading(parentElement, searchForm = undefined) {
 
 /**
  * Fjarlægir „loading state“.
- * @param {HTMLElement} parentElement Element sem inniheldur skilaboð.
+ * @param {Element} parentElement Element sem inniheldur skilaboð.
  * @param {Element | undefined} searchForm Leitarform sem á að gera virkt.
  */
 function setNotLoading(parentElement, searchForm = undefined) {
@@ -102,7 +102,7 @@ function createSearchResults(results) {
 
 /**
  *
- * @param {HTMLElement} parentElement Element sem á að birta niðurstöður í.
+ * @param {Element} parentElement Element sem á að birta niðurstöður í.
  * @param {Element} searchForm Form sem á að gera óvirkt.
  * @param {string} query Leitarstrengur.
  */
@@ -121,7 +121,7 @@ export async function searchAndRender(parentElement, searchForm, query) {
 
 /**
  * Sýna forsíðu, hugsanlega með leitarniðurstöðum.
- * @param {HTMLElement} parentElement Element sem á að innihalda forsíðu.
+ * @param {Element} parentElement Element sem á að innihalda forsíðu.
  * @param {(e: SubmitEvent) => void} searchHandler Fall sem keyrt er þegar leitað er.
  * @param {string | undefined} query Leitarorð, ef eitthvað, til að sýna niðurstöður fyrir.
  */
@@ -157,7 +157,7 @@ export async function renderFrontpage(
 
 /**
  * Sýna vöru.
- * @param {HTMLElement} parentElement Element sem á að innihalda vöru.
+ * @param {Element} parentElement Element sem á að innihalda vöru.
  * @param {string} id Auðkenni vöru.
  */
 export async function renderProduct(parentElement, id) {
@@ -214,7 +214,7 @@ export async function renderProduct(parentElement, id) {
 
 /**
  * Birtir allar vörur.
- * @param {HTMLElement} parentElement Element sem á að birta vörur í.
+ * @param {Element} parentElement Element sem á að birta vörur í.
  */
 export async function renderProducts(parentElement) {
   setLoading(parentElement);

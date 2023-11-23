@@ -5,7 +5,9 @@ import { renderProducts } from './lib/ui.js';
  */
 function route() {
   const mainElement = document.body.querySelector('.page-content');
-  renderProducts(mainElement);
+  if (mainElement) {
+    renderProducts(mainElement);
+  }
 }
 
 // Athugum í byrjun hvað eigi að birta.
