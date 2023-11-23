@@ -105,26 +105,15 @@ function createSearchResults(results) {
  * @param {string} query Leitarstrengur.
  */
 export async function searchAndRender(parentElement, searchForm, query) {
-  const mainElement = parentElement.querySelector('.page-content');
+  parentElement.querySelector('.result')?.remove();
 
-  if (!mainElement) {
-    console.warn('fann ekki page content element');
-    return;
-  }
-
-  // Fjarlægja fyrri niðurstöður
-  const resultElement = document.querySelector('.result');
-  if (resultElement) {
-    resultElement.remove();
-  }
-
-  setLoading(mainElement, searchForm);
+  setLoading(parentElement, searchForm);
   const results = await searchProducts(query);
-  setNotLoading(mainElement, searchForm);
+  setNotLoading(parentElement, searchForm);
 
   const resultsEl = createSearchResults(results);
 
-  mainElement.appendChild(resultsEl);
+  parentElement.appendChild(resultsEl);
 }
 
 /**

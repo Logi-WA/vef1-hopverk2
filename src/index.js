@@ -19,7 +19,14 @@ async function onSearch(e) {
     return;
   }
 
-  await searchAndRender(document.body, e.target, value);
+  const mainElement = document.body.querySelector('.page-content');
+
+  if (!mainElement) {
+    console.error('main element not found');
+    return;
+  }
+
+  await searchAndRender(mainElement, e.target, value);
   window.history.pushState({}, '', `/?query=${value}`);
 }
 
