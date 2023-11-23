@@ -46,7 +46,7 @@ function route() {
   }
 
   if (id) {
-    renderProduct(mainElement, id)
+    renderProduct(mainElement, id);
   } else {
     renderFrontpage(mainElement, onSearch, query ?? undefined);
   }
@@ -55,7 +55,9 @@ function route() {
 // Bregst við því þegar við notum vafra til að fara til baka eða áfram.
 window.onpopstate = () => {
   const mainElement = document.body.querySelector('.page-content');
-  empty(mainElement);
+  if (mainElement) {
+    empty(mainElement);
+  }
   route();
 };
 
