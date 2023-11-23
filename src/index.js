@@ -1,5 +1,5 @@
 import { empty } from './lib/elements.js';
-import { renderFrontpage, searchAndRender } from './lib/ui.js';
+import { renderFrontpage, renderProduct, searchAndRender } from './lib/ui.js';
 
 /**
  * Fall sem keyrir við leit.
@@ -36,6 +36,7 @@ async function onSearch(e) {
 function route() {
   const params = new URLSearchParams(window.location.search);
   const query = params.get('query');
+  const id = params.get('id');
 
   const mainElement = document.body.querySelector('.page-content');
 
@@ -44,7 +45,11 @@ function route() {
     return;
   }
 
-  renderFrontpage(mainElement, onSearch, query ?? undefined);
+  if (id) {
+    renderProduct(mainElement, id)
+  } else {
+    renderFrontpage(mainElement, onSearch, query ?? undefined);
+  }
 }
 
 // Bregst við því þegar við notum vafra til að fara til baka eða áfram.
