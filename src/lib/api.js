@@ -6,7 +6,6 @@
 /**
  * Sækjum týpurnar okkar.
  * @typedef {import('./api.types.js').Product} Product
- * @typedef {import('./api.types.js').Category} Category
  * @typedef {import('./api.types.js').ProductSearchResult} ProductSearchResult
  */
 
@@ -84,12 +83,12 @@ export async function getProducts(limit = null, category = null) {
   try {
     response = await fetch(url);
   } catch (e) {
-    console.error('Villa við að sækja gögn um geimskot', e);
+    console.error('Villa við að sækja gögn', e);
     return null;
   }
 
   if (!response.ok) {
-    console.error('Fékk ekki 200 status frá API fyrir geimskot', response);
+    console.error('Fékk ekki 200 status frá API', response);
     return null;
   }
 
@@ -121,12 +120,12 @@ export async function getProduct(id) {
   try {
     response = await fetch(url);
   } catch (e) {
-    console.error('Villa við að sækja gögn um geimskot', e);
+    console.error('Villa við að sækja gögn', e);
     return null;
   }
 
   if (!response.ok) {
-    console.error('Fékk ekki 200 status frá API fyrir geimskot', response);
+    console.error('Fékk ekki 200 status frá API', response);
     return null;
   }
 
@@ -136,7 +135,7 @@ export async function getProduct(id) {
   try {
     product = await response.json();
   } catch (e) {
-    console.error('Villa við að lesa gögn um geimskot', e);
+    console.error('Villa við að lesa gögn', e);
     return null;
   }
 

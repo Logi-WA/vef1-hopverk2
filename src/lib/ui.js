@@ -1,5 +1,5 @@
 import { getProduct, getProducts, searchProducts } from './api.js';
-import { el, card } from './elements.js';
+import { el, card, empty } from './elements.js';
 
 /**
  * Býr til leitarform.
@@ -8,16 +8,23 @@ import { el, card } from './elements.js';
  * @returns {HTMLElement} Leitarform.
  */
 export function renderSearchForm(searchHandler, query = undefined) {
-  /* const search = el('input', {
+  const search = el('input', {
+    class: 'search-input',
     type: 'search',
-    placeholder: 'Leitarorð',
+    placeholder: 'Leita...',
     value: query ?? '',
   });
-  const button = el('button', {}, 'Leita');
+  const button = el('button', { class: 'search-btn' },
+    el('img', {
+      class: 'search-icon',
+      src: './icon/search.png',
+      alt: ''
+    })
+  );
 
-  const container = el('form', { class: 'search' }, search, button);
+  const container = el('form', { class: 'search-bar' }, search, button);
   container.addEventListener('submit', searchHandler);
-  return container; */
+  return container;
 }
 
 /**
@@ -82,7 +89,7 @@ function createSearchResults(results) {
     return notFound;
   }
 
-  const container = el('div', { class: 'product-grid grid' });
+  const container = el('div', { class: 'result product-grid grid' });
 
   for (const result of results) {
     container.appendChild(card(result));
@@ -98,17 +105,17 @@ function createSearchResults(results) {
  * @param {string} query Leitarstrengur.
  */
 export async function searchAndRender(parentElement, searchForm, query) {
-  const mainElement = parentElement.querySelector('main');
+  const mainElement = parentElement.querySelector('.page-content');
 
   if (!mainElement) {
-    console.warn('fann ekki <main> element');
+    console.warn('fann ekki page content element');
     return;
   }
 
   // Fjarlægja fyrri niðurstöður
-  const resultsElement = mainElement.querySelector('.results');
-  if (resultsElement) {
-    resultsElement.remove();
+  const resultElement = document.querySelector('.result');
+  if (resultElement) {
+    resultElement.remove();
   }
 
   setLoading(mainElement, searchForm);
@@ -126,7 +133,7 @@ export async function searchAndRender(parentElement, searchForm, query) {
  * @param {(e: SubmitEvent) => void} searchHandler Fall sem keyrt er þegar leitað er.
  * @param {string | undefined} query Leitarorð, ef eitthvað, til að sýna niðurstöður fyrir.
  */
-export function renderFrontpage(parentElement, searchHandler, query = undefined) {
+export async function renderFrontpage(parentElement, searchHandler, query = undefined) {
   const searchForm = renderSearchForm(searchHandler, query);
   parentElement.appendChild(searchForm);
 
@@ -135,11 +142,19 @@ export function renderFrontpage(parentElement, searchHandler, query = undefined)
     return;
   }
 
-  const container = el('div', { class: 'product-grid' });
+  const newProductsContainer = el('div', { class: 'new-products', id: 'newProds' },
+    el('h2', { }, 'Nýjar vörur')
+  );
 
-  for (const result of results) {
-    container.appendChild(card(result));
-  }
+  parentElement.appendChild(newProductsContainer);
+
+  setLoading(newProductsContainer, searchForm);
+  const results = await getProducts('6');
+  setNotLoading(newProductsContainer, searchForm);
+
+  const resultsEl = createSearchResults(results);
+
+  newProductsContainer.appendChild(resultsEl);
 }
 
 /**
@@ -147,7 +162,7 @@ export function renderFrontpage(parentElement, searchHandler, query = undefined)
  * @param {HTMLElement} parentElement Element sem á að innihalda vöru.
  * @param {string} id Auðkenni vöru.
  */
-export async function renderProduct(parentElement, id) {
+/* export async function renderProduct(parentElement, id) {
   const container = el('main', {});
   const backElement = el(
     'div',
@@ -204,4 +219,4 @@ export async function renderProduct(parentElement, id) {
   );
 
   container.appendChild(launchElement);
-}
+} */

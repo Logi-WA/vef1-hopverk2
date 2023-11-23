@@ -30,12 +30,20 @@ function route() {
   const params = new URLSearchParams(window.location.search);
   const query = params.get('query');
 
-  renderFrontpage(document.body, onSearch, query ?? undefined);
+  const mainElement = document.body.querySelector('.page-content');
+
+  if (!mainElement) {
+    console.error('main element not found');
+    return;
+  }
+
+  renderFrontpage(mainElement, onSearch, query ?? undefined);
 }
 
 // Bregst við því þegar við notum vafra til að fara til baka eða áfram.
 window.onpopstate = () => {
-  empty(document.body);
+  const mainElement = document.body.querySelector('.page-content');
+  empty(mainElement);
   route();
 };
 

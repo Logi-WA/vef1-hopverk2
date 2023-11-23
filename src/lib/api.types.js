@@ -9,13 +9,7 @@
  * @property {string} image Mynd af vöru.
  * @property {string} created Tími sem vara var stofnuð.
  * @property {string} updated Tími sem vara var uppfærð.
- * @property {Category} category Vöruflokkur vöru.
- */
-
-/**
- * @typedef {object} Category
- * @property {string} id Auðkenni vöruflokks.
- * @property {string} title Titill vöruflokks.
+ * @property {string} category_title Vöruflokkur vöru.
  */
 
 /**
