@@ -52,12 +52,12 @@ export function empty(element) {
  */
 export function card(product) {
   const productEl = el('div', { class: 'grid-product' },
-    el('a', { href: 'pages/product.html', class: 'prod-img-link' },
+    el('a', { href: `/?id=${product.id}`, class: 'prod-img-link' },
       el('img', { class: 'prod-img', src: product.image }),
     ),
     el('div', { class: 'prod-info' },
       el('div', {},
-        el('a', { href: 'pages/product.html', class: 'prod-name-link' },
+        el('a', { href: `/?id=${product.id}`, class: 'prod-name-link' },
           el('p', { class: 'prod-name' }, product.title),
         ),
         el('p', { class: 'prod-category' }, product.category_title)
