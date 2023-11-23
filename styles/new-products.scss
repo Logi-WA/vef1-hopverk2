@@ -1,11 +1,7 @@
-.new-products {
-  margin-top: 2rem;
-
-  h2 {
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: Lato;
-  }
+.new-products h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: Lato;
 }
 
 .grid-product {
@@ -13,9 +9,18 @@
   display: flex;
   flex-direction: column;
 
-  .prod-img-link .prod-img {
-    width: 100%;
+  .prod-img-link {
+    display: block;
+    min-height: 295px;
     margin-bottom: 0.8rem;
+  }
+
+  .prod-img-link .prod-img {
+    min-width: var(--width-column);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 295px;
   }
 
   .prod-info {
