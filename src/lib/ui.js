@@ -21,7 +21,7 @@ export function renderSearchForm(searchHandler, query = undefined) {
       class: 'search-icon',
       src: './icon/search.png',
       alt: '',
-    }),
+    })
   );
 
   const container = el('form', { class: 'search-bar' }, search, button);
@@ -31,7 +31,7 @@ export function renderSearchForm(searchHandler, query = undefined) {
 
 /**
  * Setur „loading state“ skilabað meðan gögn eru sótt.
- * @param {HTMLElement} parentElement Element sem á að birta skilbaoð í.
+ * @param {Element} parentElement Element sem á að birta skilbaoð í.
  * @param {Element | undefined} searchForm Leitarform sem á að gera óvirkt.
  */
 function setLoading(parentElement, searchForm = undefined) {
@@ -55,7 +55,7 @@ function setLoading(parentElement, searchForm = undefined) {
 
 /**
  * Fjarlægir „loading state“.
- * @param {HTMLElement} parentElement Element sem inniheldur skilaboð.
+ * @param {Element} parentElement Element sem inniheldur skilaboð.
  * @param {Element | undefined} searchForm Leitarform sem á að gera virkt.
  */
 function setNotLoading(parentElement, searchForm = undefined) {
@@ -102,7 +102,7 @@ function createSearchResults(results) {
 
 /**
  *
- * @param {HTMLElement} parentElement Element sem á að birta niðurstöður í.
+ * @param {Element} parentElement Element sem á að birta niðurstöður í.
  * @param {Element} searchForm Form sem á að gera óvirkt.
  * @param {string} query Leitarstrengur.
  */
@@ -121,14 +121,14 @@ export async function searchAndRender(parentElement, searchForm, query) {
 
 /**
  * Sýna forsíðu, hugsanlega með leitarniðurstöðum.
- * @param {HTMLElement} parentElement Element sem á að innihalda forsíðu.
+ * @param {Element} parentElement Element sem á að innihalda forsíðu.
  * @param {(e: SubmitEvent) => void} searchHandler Fall sem keyrt er þegar leitað er.
  * @param {string | undefined} query Leitarorð, ef eitthvað, til að sýna niðurstöður fyrir.
  */
 export async function renderFrontpage(
   parentElement,
   searchHandler,
-  query = undefined,
+  query = undefined
 ) {
   const searchForm = renderSearchForm(searchHandler, query);
   parentElement.appendChild(searchForm);
@@ -141,7 +141,7 @@ export async function renderFrontpage(
   const newProductsContainer = el(
     'div',
     { class: 'new-products', id: 'newProds' },
-    el('h2', {}, 'Nýjar vörur'),
+    el('h2', {}, 'Nýjar vörur')
   );
 
   parentElement.appendChild(newProductsContainer);
@@ -157,7 +157,7 @@ export async function renderFrontpage(
 
 /**
  * Sýna vöru.
- * @param {HTMLElement} parentElement Element sem á að innihalda vöru.
+ * @param {Element} parentElement Element sem á að innihalda vöru.
  * @param {string} id Auðkenni vöru.
  */
 export async function renderProduct(parentElement, id) {
@@ -181,23 +181,23 @@ export async function renderProduct(parentElement, id) {
     el(
       'p',
       { class: 'product-category' },
-      `Flokkur: ${product.category_title}`,
+      `Flokkur: ${product.category_title}`
     ),
     el('p', { class: 'product-price' }, `Verð: ${product.price} kr.-`),
-    el('div', { class: 'product-text' }, el('p', {}, product.description)),
+    el('div', { class: 'product-text' }, el('p', {}, product.description))
   );
 
   const productPage = el(
     'div',
     { class: 'page-product' },
     el('img', { class: 'product-img', src: product.image }),
-    productInformation,
+    productInformation
   );
 
   const relatedTitle = el(
     'h2',
     { class: 'category-header' },
-    `Skoðaðu meira úr ${product.category_title}`,
+    `Skoðaðu meira úr ${product.category_title}`
   );
 
   parentElement.appendChild(productPage);
@@ -205,6 +205,20 @@ export async function renderProduct(parentElement, id) {
 
   setLoading(parentElement);
   const results = await getProducts('3', product.category_title);
+  setNotLoading(parentElement);
+
+  const resultsEl = createSearchResults(results);
+
+  parentElement.appendChild(resultsEl);
+}
+
+/**
+ * Birtir allar vörur.
+ * @param {Element} parentElement Element sem á að birta vörur í.
+ */
+export async function renderProducts(parentElement) {
+  setLoading(parentElement);
+  const results = await getProducts('30');
   setNotLoading(parentElement);
 
   const resultsEl = createSearchResults(results);
