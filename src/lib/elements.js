@@ -72,7 +72,7 @@ export function card(product) {
         ),
         el('p', { class: 'prod-category' }, product.category_title),
       ),
-      el('p', { class: 'prod-price' }, product.price),
+      el('p', { class: 'prod-price' }, `${product.price} kr.-`),
     ),
   );
   return productEl;
