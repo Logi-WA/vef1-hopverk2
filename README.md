@@ -1,5 +1,9 @@
 # Vefforritun 1, 2023, hópverkefni 2
 
+## Valin virkni
+
+- Stuðningur við leit: með því að nota /products?search={query} og leita þannig í vörum, birta niðurstöður eða ef engar niðurstöður. Geyma skal leit í URL svo hægt sé að leita aftur.
+
 ## Keyra vefsíðu
 
 Til þess að keyra vefsíðu skal keyra skipunina:  

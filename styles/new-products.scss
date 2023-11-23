@@ -1,7 +1,7 @@
 .new-products h2 {
   font-size: 2rem;
   font-weight: bold;
-  font-family: Lato;
+  font-family: Lato, sans-serif;
 }
 
 .grid-product {
@@ -52,7 +52,6 @@
   background-color: #222;
   border: none;
   border-radius: 5px;
-
   margin-top: 3rem;
 
   a {
