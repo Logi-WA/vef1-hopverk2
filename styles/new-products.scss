@@ -9,9 +9,16 @@
   display: flex;
   flex-direction: column;
 
+  .prod-img-link {
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
   .prod-img-link .prod-img {
     width: 100%;
-    margin-bottom: 0.8rem;
+    height: auto;
+    object-fit: cover;
+    max-height: 295px;
   }
 
   .prod-info {
