@@ -57,7 +57,11 @@ export function card(product) {
     el(
       'a',
       { href: `/?id=${product.id}`, class: 'prod-img-link' },
-      el('img', { class: 'prod-img', src: product.image, alt: `Mynd af ${product.title}.` }),
+      el('img', {
+        class: 'prod-img',
+        src: product.image,
+        alt: `Mynd af ${product.title}.`,
+      }),
     ),
     el(
       'div',

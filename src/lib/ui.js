@@ -21,8 +21,8 @@ export function renderSearchForm(searchHandler, query = undefined) {
       class: 'search-icon',
       src: './icon/search.png',
       alt: '',
-    }), 
-    el('p', { class: 'hidden-axe' }, 'leita')
+    }),
+    el('p', { class: 'hidden-axe' }, 'leita'),
   );
 
   const container = el('form', { class: 'search-bar' }, search, button);
@@ -191,7 +191,11 @@ export async function renderProduct(parentElement, id) {
   const productPage = el(
     'div',
     { class: 'page-product' },
-    el('img', { class: 'product-img', src: product.image, alt:`Mynd af ${product.title}.`  }),
+    el('img', {
+      class: 'product-img',
+      src: product.image,
+      alt: `Mynd af ${product.title}.`,
+    }),
     productInformation,
   );
 
