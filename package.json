@@ -13,10 +13,10 @@
     "browser-sync": "browser-sync start --server --files ./src/ styles.css index.html",
     "dev": "concurrently npm:sass-watch npm:browser-sync",
     "copy:html": "cpy ./**/*.html ./*.html ./build/",
-    "copy:js": "cpy './src/' './build/'",
+    "copy:js": "cpy ./src/ ./build/",
     "copy:css": "cpy ./*.css ./build/",
     "copy:ttf": "cpy ./**/*.ttf ./build/",
-    "copy:img": "cpy './icon/' './build/'",
+    "copy:img": "cpy ./icon/ ./build/",
     "clean": "rimraf ./build",
     "build": "npm run sass && npm run clean && concurrently npm:copy:*"
   },
