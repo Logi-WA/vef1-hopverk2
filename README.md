@@ -14,7 +14,7 @@ Til þess að keyra lint er keyrt skipunina:
 
 ## Uppsetning verkefnis
 
-Leturgerðir eru í möppunni _/fonts_, merki í _/icon_, HTML-skrá í _/pages_ fyrir utan `index.html`, allar `.scss`skrárnar í _/styles_ fyrir utan `styles.scss` og allir JavaScript-kóðar í _/src_.
+Leturgerðir eru í möppunni [/fonts](./fonts/), merki í [/icon](./icon/), HTML-skrá í [/pages](./pages/) fyrir utan `index.html`, allar `.scss` skrárnar í [/styles](./styles/) fyrir utan `styles.scss` og allir JavaScript-kóðar í [/src](./src/).
 
 ### HTML
 
@@ -28,7 +28,7 @@ Notað var SCSS til þess að flokka CSS-ið í skrár en þær eru töluvert ma
 
 ### JavaScript
 
-Allir kóðarnir eru í möppunni _/src_ þar sem `index.js` er fyrir `index.html` og `products.js` er fyrir `products.html`. Þær skrár nota föll úr skránum í möppunni _/src/lib_.
+Allir kóðarnir eru í möppunni [/src](./src/) þar sem `index.js` er fyrir `index.html` og `products.js` er fyrir `products.html`. Þær skrár nota föll úr skránum í möppunni [/src/lib](./src/lib/).
 
 ## Höfundar
 
